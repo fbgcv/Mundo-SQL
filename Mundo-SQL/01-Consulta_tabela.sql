@@ -1,32 +1,29 @@
--- 01 ====
+-- 01. Quais são todas as pessoas cadastradas?
 SELECT * FROM pessoas;
-SELECT nome, altura FROM pessoas;
-WHERE altura > 1.7;
--- 02 ====
-SELECT * FROM pessoas;
-SELECT altura FROM pessoas;
-WHERE altura > 1.6 AND altura < 1.8;
--- 03 ====
-SELECT * FROM pessoas;
-SELECT nome_pessoa FROM pessoa;
-WHERE nome_pessoa LIKE 'c%';
--- 04 ====
-SELECT COUNT(nome_pessoa);
-FROM pessoas;
--- 05 ====
-SELECT AVG(altura);
-FROM pessoas;
--- 06 ====
-SELECT MIN(altura);
-FROM pessoas;
--- 07 ====
-SELECT MAX(altura);
-FROM pessoas;
--- 08 ====
-SELECT LEN(nome_pessoa)
-WHERE nome_pessoa > 10;
--- 09 ====
-SELECT pessoas;
-FROM altura;
-ORDER BY pessoas DESC;
--- 10 ====
+
+-- 02. Quais pessoas têm altura maior que 1.70m?
+SELECT nome_pessoa, altura FROM pessoas WHERE altura > 1.70;
+
+-- 03. Quem tem altura entre 1.60m e 1.80m?
+SELECT nome_pessoa, altura FROM pessoas WHERE altura BETWEEN 1.60 AND 1.80;
+
+-- 04 Existe alguém com nome começando com 'C'?
+SELECT nome_pessoa FROM PESSOAS WHERE nome_pessoa LIKE 'C%';
+
+-- 05. Quantas pessoas estão cadastradas ?
+SELECT COUNT(*) AS total_de_pessoas FROM pessoas;
+
+-- 06. Qual é a altura média das pessoas?
+SELECT AVG(altura) AS altura_media FROM pessoas;
+
+-- 07. Qual é a menor altura cadastrada?
+SELECT MIN(altura) AS menor_altura FROM pessoas;
+
+-- 08. Qual é a maior altura cadastrada?
+SELECT MAX(altura) AS maior_altura FROM pessoas;
+
+-- 09. Quantas pessoas têm nome com mais de 10 letras?
+SELECT COUNT(*) AS total_pessoas_nome_longo FROM pessoas WHERE LENGTH(nome_pessoa) > 10;
+
+-- 10. Liste os nomes das pessoas ordenados por altura decrescente.
+SELECT nome_pessoa, altura FROM pessoas ORDER BY altura DESC;
